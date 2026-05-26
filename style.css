@@ -1,0 +1,287 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    background: linear-gradient(135deg, #1a472a, #0d2818);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courier New', monospace;
+    padding: 20px;
+}
+
+.container {
+    background: #2c1810;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 2px solid #daa520;
+    max-width: 1100px;
+}
+
+#gameCanvas {
+    display: block;
+    margin: 0 auto;
+    border: 3px solid #daa520;
+    border-radius: 10px;
+    background: #2e4a2e;
+    cursor: pointer;
+}
+
+/* Boss Info Bar */
+.boss-info {
+    background: linear-gradient(135deg, #1a0a0a, #2a0a0a);
+    border: 2px solid #ff4444;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { border-color: #ff4444; box-shadow: 0 0 5px red; }
+    100% { border-color: #ff8888; box-shadow: 0 0 15px red; }
+}
+
+.boss-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff4444;
+    text-shadow: 0 0 5px darkred;
+    margin-bottom: 5px;
+}
+
+.boss-hp-bar {
+    background: #330000;
+    border-radius: 10px;
+    height: 20px;
+    margin: 5px 0;
+    overflow: hidden;
+}
+
+.boss-hp-fill {
+    background: linear-gradient(90deg, #ff0000, #ff6600);
+    height: 100%;
+    width: 100%;
+    transition: width 0.3s ease;
+}
+
+.boss-hp-text {
+    color: #ff8888;
+    font-size: 12px;
+}
+
+.boss-phase {
+    color: #ffaa00;
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.info-panel {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 0;
+    padding: 10px;
+    background: #1a1a2e;
+    border-radius: 10px;
+    color: #ffd700;
+    font-weight: bold;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.info-panel div {
+    background: #0f0f1a;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid #ffd700;
+    font-size: 12px;
+}
+
+.equipment-panel {
+    background: #1a1a2e;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #daa520;
+}
+
+.equipment-panel h4 {
+    color: #ffd700;
+    text-align: center;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.equipment-slots {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.equip-slot {
+    background: #0f0f1a;
+    padding: 5px 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.equip-slot span {
+    color: #87ceeb;
+    font-size: 11px;
+}
+
+.tiny-btn {
+    background: #4a2a1a;
+    color: #ffd700;
+    border: 1px solid #daa520;
+    padding: 3px 8px;
+    font-size: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tiny-btn:hover {
+    background: #6b3a2a;
+    transform: scale(1.02);
+}
+
+.inventory-skill-panel {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.inventory-box, .skill-box, .save-load-box {
+    flex: 1;
+    background: #1a1a2e;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #daa520;
+}
+
+.inventory-box h4, .skill-box h4, .save-load-box h4 {
+    color: #ffd700;
+    margin-bottom: 8px;
+    font-size: 12px;
+    text-align: center;
+}
+
+#inventoryList, #skillInfo {
+    color: #87ceeb;
+    font-size: 10px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.small-btn {
+    background: #4a2a1a;
+    color: #ffd700;
+    border: 1px solid #daa520;
+    padding: 5px 6px;
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 4px;
+    transition: all 0.2s;
+}
+
+.small-btn:hover {
+    background: #6b3a2a;
+    transform: scale(1.02);
+}
+
+.reset-btn {
+    background: #8b0000;
+    border-color: #ff4444;
+}
+
+.reset-btn:hover {
+    background: #aa0000;
+}
+
+.controls {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.touch-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5px;
+    flex-wrap: wrap;
+}
+
+.moveBtn {
+    background: #2c3e50;
+    color: #ffd700;
+    border: 2px solid #daa520;
+    padding: 8px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.moveBtn:hover {
+    background: #3e5a6e;
+    transform: scale(1.05);
+}
+
+.status-msg {
+    margin-top: 12px;
+    padding: 8px;
+    background: #0f0f1a;
+    border-radius: 10px;
+    color: #87ceeb;
+    text-align: center;
+    font-size: 12px;
+    border-left: 4px solid #ffd700;
+}
+
+@media (max-width: 800px) {
+    .inventory-skill-panel {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .equipment-slots {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .info-panel div {
+        font-size: 9px;
+        padding: 3px 6px;
+    }
+    
+    .moveBtn {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+    
+    .boss-name {
+        font-size: 14px;
+    }
+}
